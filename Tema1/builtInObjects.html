@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built In Objects</title>
+</head>
+<body>
+    <script>
+        /* Objetos mas comunes
+            String()
+            Number()
+            Boolean()
+            Array()
+            Object()
+            Function()  //Hasta aquí es donde haremos más hincapié
+            RegExp()
+            Date()
+            Error()
+            Symbol()
+        */
+        // El primero es de tipo objeto, y el segundo es de tipo string
+        var str1 = new String ("Hola");
+        var str2 = 'Adios'; 
+        //Si hacemos un consolelog de los tipos, no son el mismo
+        console.log(typeof str1, typeof str2);
+        console.log("primera letra de hola", str1[0]);
+        console.log("Ultima letra de adiós", str2[4]);
+
+        var array1 = new Array(1, 2, 3);
+        var array2 = [1, 2, 3];
+
+        console.log(array1, array2);
+        console.log(typeof array1, typeof array2);
+        console.log(array1[1]);
+        console.log(array2[2]);
+
+        //se recomienda usar la del array 2
+    </script>
+</body>
+</html>

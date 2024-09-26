@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+</head>
+<body>
+    <script>
+        //como declarar
+        var x = "hola1";     //Se pueden usar las comillas dobles 
+        var y = 'hola2';     //Se pueden usar las simples
+        var z = `hola3`;     //Se pueden usar las francesas
+        //Las comillas dobles y simples no son multilinea
+        var b = "Hola4 "+ 
+        "Que tal ";
+        //Para hacerlo multilínea vamos a necesitar concatenar.
+        console.log(x, y, z, b);
+
+        var q = b.concat('muy bien y tu?');
+
+        console.log(q)
+        //Cuando queremos que se muestren las comillas dobles en el texto
+            //si usamos las mismas necesitamos la contrabarra
+        var c = "Hola soy \"Belen\" "; 
+            //si no las usamos, es suficiente con usar las comillas contrarias
+        var a = 'Hola soy "Helena"';
+
+        console.log(c);
+        console.log(a);
+
+        //PROPIEDADEs
+        console.log(a.length); //Nos indica el número de carácteres del String
+        //Los índices del string siempre empezarán en 0. 
+
+        for (let i=0; i <= a.length; i++){
+            console.log(a[i]);
+        };
+
+        console.log(a.charAt(2)); //Nos Indica que caracter hay en esa posición a UTF16
+        
+        console.log(a.indexOf("ye", 3)) // Busca la posición 3 del Index
+
+        console.log(a.search('ena')); //Para buscar dentro de un array
+        
+        console.log(a.includes('ye'));  //Busca el texto y da false or true si está o no
+    </script>
+</body>
+</html>

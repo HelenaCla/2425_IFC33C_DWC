@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+</head>
+<body>
+    <script>
+        
+        var a = null;       //Tipo Null
+        var b;              //Tipo Undefined
+        var c = false;      //Tipo Boolean
+        var d = 4;          //Tipo Number
+        var e = 5.6;        //Tipo Number
+        var f = 'Hello';    //Tipo String
+        var g = {           //Tipo Objeto
+            nombre: "Helena",
+            apellidos: "Gonçalves"
+        };
+        console.log(a, b, c, d, e, f, g);
+        console.log(typeof a, typeof b, typeof c, typeof e, typeof f, typeof g);
+        // si pedimos un input al usuario será string
+
+        //Como declarar las variables
+        //Declarar las variables con let o const
+
+        //ambito
+
+        let p1 = 'hola';
+        function prueba(p1) {
+            p1 = 'adios';
+            console.log(p1)
+        };
+
+        prueba();
+        console.log(p1);
+
+        z = 99; //mala practica, hay que declarar bien las variables.
+                // provoca hoisting
+         
+    </script>
+</body>
+</html>
