@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cara o Cruz</title>
+    <link rel="stylesheet" href="stylesCaraoCruz.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Joc de Cara o Creu</h1>
+        <button id="playButton">Juga!</button>
+    </div>
+
+    <script>
+        document.getElementById('playButton').addEventListener('click', function() {
+            // Genera un número aleatori entre 1 i 2
+            const result = Math.floor(Math.random() * 2) + 1; // 1 o 2
+            
+            // Mostra el resultat en una finestra emergent
+            if (result === 1) {
+                alert("Has guanyat! (Cara)");
+            } else {
+                alert("Has perdut! (Creu)");
+            }
+        });
+    </script>
+</body>
+</html>
