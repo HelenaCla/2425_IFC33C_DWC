@@ -1,4 +1,24 @@
 /*css tret de https://github.com/LFeh/piano/blob/master/dev/assets/css/style.css*/
+body{
+    background-color: #F1CFFF;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3CradialGradient id='a' cx='0' cy='800' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23f9cae9'/%3E%3Cstop offset='1' stop-color='%23f9cae9' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='b' cx='1200' cy='800' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23d8e0ff'/%3E%3Cstop offset='1' stop-color='%23d8e0ff' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='c' cx='600' cy='0' r='600' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23e2dce9'/%3E%3Cstop offset='1' stop-color='%23e2dce9' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='d' cx='600' cy='800' r='600' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23F1CFFF'/%3E%3Cstop offset='1' stop-color='%23F1CFFF' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='e' cx='0' cy='0' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23FFC6D4'/%3E%3Cstop offset='1' stop-color='%23FFC6D4' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='f' cx='1200' cy='0' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23BBF0FF'/%3E%3Cstop offset='1' stop-color='%23BBF0FF' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='1200' height='800'/%3E%3Crect fill='url(%23b)' width='1200' height='800'/%3E%3Crect fill='url(%23c)' width='1200' height='800'/%3E%3Crect fill='url(%23d)' width='1200' height='800'/%3E%3Crect fill='url(%23e)' width='1200' height='800'/%3E%3Crect fill='url(%23f)' width='1200' height='800'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo{
+    margin-top: 7vh;
+    display: flex;
+    align-items: center;
+    font-size: 2vw;
+    
+}
+h1{
+    font-family: 'Anton', sans-serif;
+}
 .piano {
     background: -webkit-linear-gradient(-65deg, #000000, #222222, #000000, #666666, #222222 75%);
     background: -moz-linear-gradient(-65deg, #000000, #222222, #000000, #666666, #222222 75%);
@@ -9,12 +29,15 @@
     padding: 0 1% 3%;
     text-align: center;
     border-radius: 10px;
+    height: auto;
+    width: 90vw;
+    max-width: 1000px;
 }
 
 .key {
     display: inline-block;
     position: relative;
-    margin: 0 2px;
+    margin: 0 0.5%;
     width: 6%;
     max-width: 85px;
 }
@@ -31,15 +54,15 @@
     background: linear-gradient(-30deg, #f8f8f8, #ffffff);
     box-shadow: inset 0 1px 0px #ffffff, inset 0 -1px 0px #ffffff, inset 1px 0px 0px #ffffff, inset -1px 0px 0px #ffffff, 0 4px 3px rgba(0, 0, 0, 0.7), inset 0 -1px 0px #ffffff, inset 1px 0px 0px #ffffff, inset -1px -1px 15px rgba(0, 0, 0, 0.5), -3px 4px 6px rgba(0, 0, 0, 0.5);
     display: block;
-    height: 300px;
+    height: 30vh;
 }
 
 .key .white-key:active,
 .key .white-key.active {
     box-shadow: inset 0 1px 0px #ffffff, inset 0 -1px 0px #ffffff, inset 1px 0px 0px #ffffff, inset -1px 0px 0px #ffffff, 0 4px 3px rgba(0, 0, 0, 0.7), inset 0 -1px 0px #ffffff, inset 1px 0px 0px #ffffff, inset -1px -1px 15px #000000, -3px 4px 6px rgba(0, 0, 0, 0.5);
     position: relative;
-    top: -5px;
-    height: 295px;
+    top: -0.05%;
+    height: 29vh;
 }
 
 .key .black-key {
@@ -52,11 +75,11 @@
     border-width: 1px 3px 8px;
     border-style: solid;
     border-color: #666 #222 #111 #555;
-    height: 160px;
+    height: 17vh;
     position: absolute;
-    top: 0px;
-    right: -40%;
-    width: 70%;
+    top: 0;
+    right: -30%;
+    width: 60%;
     z-index: 10;
 }
 
@@ -64,4 +87,51 @@
 .key .black-key.active {
     border-bottom-width: 3px;
     top: 0;
+}
+
+.finder{
+    background-color: white;
+    width: 54vw;
+    height: auto;
+    align-items: center;
+}
+.recerca {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 0.5vw;
+}
+.text{
+    font-size: 40px;
+}
+
+.resposta{
+    font-size: 30px;
+}
+.boto{
+    background-color: rgb(194, 3, 3);
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease-in-out;
+}
+
+.boto:hover{
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+.resultats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.titulo{
+    display: flex;
+    flex-direction: column;
 }
