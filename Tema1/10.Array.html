@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var frutas = ["Manzana", "Pera", "Plátano"]; //Añadir valores al array
+        console.log(frutas, frutas[0], frutas[1], frutas[2]);  //Imprimir los valores del array
+        //Añadir elemento
+        frutas.push("Kiwi"); 
+        console.log(frutas);
+        //eliminarlo y a la vez almacenarlo en esta variable
+        var a = frutas.pop();  
+        console.log(a);
+        //Añadir elemento al principio del Array
+        frutas.unshift("Mango");  
+        console.log(frutas);
+        //obtener el primer elemento y eliminarlo del array
+        var b = frutas.shift();
+        console.log(frutas);
+        console.log(b);
+
+        //Ver el tamaño del array
+        var tam = frutas.length;
+        console.log(tam);
+        //Borrar elementos del array
+            //con delete dejamos un elemento vacío en el Array, no elimina el indice
+        delete frutas[1]; //no es recomendable
+        console.log(frutas);
+        //Como eliminar el elemento correctamente
+        frutas.splice(1,1); //Eliminamos un elemento, empezando por el indice 1
+        console.log(frutas);
+    </script>
+</body>
+</html>

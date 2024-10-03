@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucles</title>
+
+</head>
+<body>
+    <script>
+        function Usuario(id, email){
+        }
+
+        var usuario1 = new Usuario ("blaserna", "iiii@email.com");
+        var usuario2 = new Usuario ("ssastre", "eeee@email.com");
+        var usuario3 = new Usuario ("heelena", "gggg@email.com");
+
+        var usuarios = [usuario1, usuario2, usuario3];
+        
+        var i = 0;
+        while (i<usuarios.length){
+            console.log(usuarios[i].id);
+        }
+        for (var i=0; i<usuarios.length; i++){
+            console.log(usuario1[i].email);
+        }
+        //forin --> iterar las propiedades de un objeto
+        for (var email in usuario1){
+            console.log(email);
+        }
+
+        //forof --> iterar los valores
+        
+        for (var id in usuarios){
+            console.log(id);
+        }
+    </script>
+</body>
+</html>

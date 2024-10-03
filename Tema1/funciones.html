@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones</title>
+</head>
+<body>
+    <script>
+
+        //podemos o no utilizar el return
+        function suma(a,b){
+            return a + b;
+        }
+
+        console.log(suma(2,3));
+
+        var a = suma(4,5); 
+        console.log(a);
+        var b = suma; //guarda la funcion suma
+        var c = b(4,5); //usa la funcion guardada en b con los parametros que enviamos
+        console.log(b);
+        console.log(c);
+
+        // Constructor para un objeto a partir de una función
+        function Persona(name, lastName){
+            this.name = name;
+            this.lastName = lastName;
+        }
+
+        persona1 = new Persona("Helena", "Goncalves Claveria");
+        console.log(persona1);
+
+        // Funciones anonimas
+        var a = function() {
+            return "hola"
+        }
+        console.log(a()); //Hay que poner los parentesis vacios
+
+        //Funciones flecha
+        (x) => {
+            return "hola" + x
+        }
+
+    </script>
+</body>
+</html>
