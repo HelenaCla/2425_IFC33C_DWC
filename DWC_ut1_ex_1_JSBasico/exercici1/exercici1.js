@@ -54,7 +54,6 @@ function generarRecibo(recibo) {
                 let paddedString = nombreProducto.padEnd(22) + " " + cantidadProd + " ".padEnd(13) + precioProd + " ".padEnd(11) + subtotal;
                 total = total + subtotal;
                 console.log(paddedString);
-                
             }
 
             console.log("--------------------------------------------------------")
