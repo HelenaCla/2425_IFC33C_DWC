@@ -52,7 +52,15 @@ let usuario ={
 
    saludarFlecha:() => console.log(`Hello, ${this.name}`)
 }
+function Usuario(nombre){
+   this.nombre = nombre;
+   this.saludarTradicional = function() {
+      console.log(`Hola, ${this.nombre}`)
+   }
+   this.saludarFlecha = () => console.log(`Hola, ${this.nombre}`);
+}
 
+let usuario1 = new Usuario("Belen");
     /**
      * Método que utiliza una función tradicional para acceder al contexto `this`.
      * Imprime "Hola, mi nombre es [nombre]."
