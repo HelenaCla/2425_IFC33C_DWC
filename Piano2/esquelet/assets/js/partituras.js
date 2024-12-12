@@ -101,32 +101,63 @@ const partitures = [
     { id: 100, title: "Halo", language: "en" }
 ];
 
-function mostraPartitures(){
-    const taula = document.querySelector('taula');
+function mostraPartitures(partitures) {
+    const tabla = document.getElementById('taula');
 
-    //bucle per recorrer totes les cançons i poder-les recorrer
-    let fila;
-    let idioma;
-    let titol;
-    let accions;
-    let td;
-    for (let i = 0; i < partitures.length; i++) {
-        // Crea una nueva fila de tabla
-        fila = document.createElement('tr');
-    
-        // Itera sobre las propiedades de cada canción
-        for (let j = 0; j < partitures[i].length; j++) {
-            // Crea una celda para la propiedad actual
-            td = document.createElement('td');
-            td.textContent = partitures[i][j];
-            fila.appendChild(td);
-        }
-    
-        // Agrega la fila a la tabla
-        taula.appendChild();
-    
+    const thead = document.createElement('thead');
+    tabla.appendChild(thead);
 
-        //creae una fila
+    const headers = ['Títol', 'Idioma', 'Accions'];
+    headers.forEach(headerText => {
+        const th = document.createElement('th');
+        th.textContent = headerText;
+        thead.appendChild(th);
+    });
 
-        
+    const tbody = document.createElement('tbody');
+    tabla.appendChild(tbody);
+
+    partitures.forEach(partitura => {
+        const tr = document.createElement('tr');
+        tbody.appendChild(tr);
+
+        const tdTitle = document.createElement('td');
+        tdTitle.textContent = partitura.title;
+        tr.appendChild(tdTitle);
+
+        const tdLanguage = document.createElement('td');
+        tdLanguage.textContent = partitura.language;
+        tr.appendChild(tdLanguage);
+
+        const tdActions = document.createElement('td');
+
+        const editButton = document.createElement('button');
+        editButton.innerHTML = '<i class="fas fa-edit"></i> Editar';
+        editButton.onclick = () => alert('Funcionalitat no disponible');
+        tdActions.appendChild(editButton);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i> Esborrar';
+        deleteButton.onclick = () => {
+            if (confirm("Vols eliminar aquesta partitura?")) {
+                alert("Element esborrat");
+            } else {
+                alert("Acció cancel·lada");
+            }
+        };
+        tdActions.appendChild(deleteButton);
+
+        tr.appendChild(tdActions);
+    });
+}
+
+document.getElementById("login").setAttribute("onclick", "openLoginWindow()");
+mostraPartitures(partitures);
+
+function openLoginWindow() {
+    const width = 600;
+    const height = 400;
+    const left = (window.screen.width - width) / 2;
+    const top = (window.screen.height - height) / 2;
+    window.open("login.html", "Score Finder", `width=${width},height=${height},top=${top},left=${left}`);
 }
