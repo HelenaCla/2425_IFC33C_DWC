@@ -22,6 +22,7 @@ function agruparTareasPorCategoria(tareas) {
     }
 
     return categorias;
+    
 }
 
 function mostrarTareasEnDOM() {
