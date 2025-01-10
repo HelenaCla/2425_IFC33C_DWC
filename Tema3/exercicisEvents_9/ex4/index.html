@@ -5,18 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador de clics</title>
+    <script src="script.js"></script>
 </head>
 
 <body>
-    <button onclick="incrementar()">Haz clic aquí</button>
+    <button id="incrementar">Haz clic aquí</button>
     <p>Has hecho clic <span id="contador">0</span> veces.</p>
-    <script>
-        let contador = 0;
-        function incrementar() {
-            contador++;
-            document.getElementById('contador').innerText = contador;
-        }
-    </script>
+    <button id="reiniciar">Reiniciar Contador</button>
 </body>
 
 </html>
