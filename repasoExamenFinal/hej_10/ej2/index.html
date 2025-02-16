@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre">
+
+    <button id="btnEnviar">Enviar</button>
+    <p>
+        Explicación:
+        <br>
+        Evento en el formulario (submit)
+
+        Cuando el formulario es enviado, se ejecuta console.log("Formulario enviado correctamente.").
+        event.preventDefault(); evita que la página se recargue o el formulario se envíe a un servidor.
+        Evento en el botón (click)
+
+        event.stopPropagation(); detiene la propagación del evento y evita que el formulario detecte el clic.
+        event.preventDefault(); evita el envío automático del formulario.
+        Se muestra el mensaje en la consola indicando que el botón fue presionado, pero no se ejecutó el envío del formulario.
+        📌 ¿Qué pasaría si NO usamos stopPropagation()?
+        Si eliminamos event.stopPropagation();, el evento click en el botón seguiría propagándose hasta el formulario. Esto haría que el evento submit del formulario se active después del click, mostrando dos mensajes en la consola en este orden:
+        Aunque preventDefault() evitaría el envío del formulario en ambos casos, la propagación del evento haría que se ejecuten ambos manejadores. Usar stopPropagation() evita que el evento llegue al formulario, asegurando que solo se ejecute el código del botón.
+    </p>
+    <script>
+     function enviarNombre(event){
+        event.stopPropagation();
+        event.preventDefault();
+
+        const nombre = document.getElementById('nombre').value;
+        alert('Form enviado correctamente');
+     }
+     document.getElementById('btnEnviar').addEventListener('click', enviarNombre)
+
+    </script>
+</body>
+</html>

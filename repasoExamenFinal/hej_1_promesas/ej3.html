@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #mensaje {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+        }
+        .exito {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>Simulación</h2>
+    <button id="btnIniciar">Iniciar</button>
+    <p id="mensaje"></p>
+
+    <script>
+        const cargarImagen = (nombre, tiempo) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() =>{
+                    if(tiempo < 0.1){
+                        reject(`Error al cargar ${nombre}`);
+                    } else {
+                        resolve(`La tarea mas rápida fué ${nombre}`);
+                    }
+                }, tiempo);
+            })
+        }
+
+        const iniciarCarga = () => {
+            const mensaje = document.getElementById("mensaje");
+            mensaje.textContent = "Cargando imágenes...";
+            mensaje.className = "";
+
+            const promesa1 = cargarImagen("Imagen 1", 3000);
+            const promesa2 = cargarImagen("Imagen 2", 6000);
+            const promesa3 = cargarImagen("Imagen 3", 5000);
+
+            Promise.race([promesa1, promesa2, promesa3])
+                .then((resultado) => {
+                    mensaje.textContent = resultado;
+                    mensaje.className = "success";
+                })
+                .catch((error) => {
+                    mensaje.textContent = error;
+                    mensaje.className = "error";
+                });
+        }
+
+        document.getElementById("btnIniciar").addEventListener("click", iniciarCarga);
+    </script>
+</body>
+</html>

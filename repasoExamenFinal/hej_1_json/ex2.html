@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON ex2</title>
+</head>
+<body>
+    <h2>Ranking de Jugadores</h2>
+    <ul id="listaJugadores"></ul>
+
+    <div class="botones">
+        <button id="ordenarPuntuación">Ordenar por puntuación</button>
+        <button id="ordenarNombre">Ordenar por Nombre</button>
+    </div>
+
+    <script>
+        const puntuaciones = [
+        { "nombre": "Ana", "puntuacion": 150 },
+        { "nombre": "Carlos", "puntuacion": 200 },
+        { "nombre": "Beatriz", "puntuacion": 180 }
+        ]
+
+        const listaJugadores = document.getElementById('listaJugadores');
+        const ordenarPuntuacion = document.getElementById('ordenarPuntuación');
+        const ordenarNombre = document.getElementById('ordenarNombre');
+
+        const mostrarJugadores = () => {
+            listaJugadores.innerHTML = "";
+
+            puntuaciones.forEach(jugador =>{
+                let li = document.createElement('li');
+                li.textContent = `${jugador.nombre} - ${jugador.puntuacion} pts`;
+                listaJugadores.appendChild(li);
+            });
+        };
+
+        const ordenarPorPuntuacion = () => {
+            puntuaciones.sort((a, b) => b.puntuacion - a.puntuacion);
+            mostrarJugadores();
+        };
+
+        const ordenarPorNombre = () => {
+            puntuaciones.sort((a, b) => {
+                if(a.nombre < b.nombre) return -1;
+                if(a.nombre > b.nombre) return 1;
+                return 0;
+            });
+            mostrarJugadores();
+        };
+        
+        ordenarPuntuacion.addEventListener('click', ordenarPorPuntuacion);
+        ordenarNombre.addEventListener('click', ordenarPorNombre);
+
+        mostrarJugadores(); 
+
+    </script>
+</body>
+</html>

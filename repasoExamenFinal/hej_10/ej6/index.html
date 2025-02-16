@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 6</title>
+</head>
+
+<body>
+    <div id="contenedor">
+        <button class="boton">Botón 1</button>
+        <button class="boton">Botón 2</button>
+    </div>
+<button id="agregarBoton">Agregar Botón</button>
+
+<script>
+    let contenedor = document.getElementById('contenedor');
+    let botonAgregar = document.getElementById('agregarBoton');
+
+    contenedor.addEventListener('click', (event) => {
+        if(event.target.classList.contains('boton')){
+            event.stopPropagation();
+            console.log(event.target.textContent);
+        }
+    })
+
+    contenedor.addEventListener('click', () => {
+        console.log('Captura: contenedor');
+    });
+    
+    
+
+    botonAgregar.addEventListener('click', () => {
+        const nuevoBoton = document.createElement('button');
+        nuevoBoton.classList.add('boton');
+        nuevoBoton.textContent = `Botón ${contenedor.children.length + 1}`;
+        contenedor.appendChild(nuevoBoton);
+    })
+</script>
+
+
+</body>
+
+</html>

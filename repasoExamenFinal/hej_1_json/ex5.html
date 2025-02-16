@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex 5 - JSON</title>
+    <style>
+        .completada {
+            text-decoration: line-through;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>Lista de Tareas</h2>
+    <ul id="listaTareas"></ul>
+
+    <div class="botones">
+        <button id="mostrarCompletadas">Mostrar Completadas</button>
+        <button id="mostrarTodas">Mostrar Todas</button>
+    </div>
+
+    <script>
+        let tareas = [
+            { "id": 1, "tarea": "Comprar pan", "estado": "pendiente" },
+            { "id": 2, "tarea": "Estudiar JavaScript", "estado": "completada" },
+            { "id": 3, "tarea": "Llamar a mamá", "estado": "pendiente" }
+        ];
+
+        const listaTareas = document.getElementById('listaTareas');
+        const btnFiltrar = document.getElementById('mostrarCompletadas');
+        const btnVerTodas = document.getElementById('mostrarTodas');
+
+        // ✅ Función para mostrar tareas
+        const mostrarTareas = (tareasFiltradas) => {
+            listaTareas.innerHTML = "";
+            tareasFiltradas.forEach(tarea => {
+                let li = document.createElement('li');
+                li.textContent = tarea.tarea;
+
+                if (tarea.estado === "completada") {
+                    li.classList.add('completada');
+                }
+
+                let btnCompletar = document.createElement('button');
+                btnCompletar.textContent = "completar";
+                
+                // Agregar evento con ID de la tarea
+                btnCompletar.addEventListener('click', () => marcarComoCompletada(tarea.id, li));
+
+                li.appendChild(btnCompletar);
+                listaTareas.appendChild(li);
+            });
+        };
+
+        // ✅ Función para marcar una tarea como completada
+        const marcarComoCompletada = (id, elemento) => {
+            tareas = tareas.map(tarea => {
+                if (tarea.id === id) {
+                    return { ...tarea, estado: "completada" }; // Devuelve una nueva copia de la tarea
+                }
+                return tarea; // Devuelve la tarea sin cambios
+            });
+
+            // ✅ Actualizar solo el elemento en el DOM
+            elemento.classList.add("completada");
+        };
+
+        // ✅ Función para filtrar tareas completadas
+        const filtrarTareas = () => {
+            let tareasCompletadas = tareas.filter(tarea => tarea.estado === "completada");
+            mostrarTareas(tareasCompletadas);
+        };
+
+        btnFiltrar.addEventListener('click', filtrarTareas);
+        btnVerTodas.addEventListener('click', () => mostrarTareas(tareas));
+
+        mostrarTareas(tareas);
+    
+    </script>
+
+</body>
+</html>

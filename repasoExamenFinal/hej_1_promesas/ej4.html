@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej4</title>
+</head>
+<body>
+    <h2>Proceso Encadenado de Archivo</h2>
+    <button id="btnIniciar">Iniciar</button>
+    <p id="mensaje"></p>
+
+    <script>
+        const descargarArchivo = () => {
+            return new Promise((resolve, reject) =>{
+                setTimeout(() => {
+                    if(Math.random() < 0.1){
+                        reject("Error al descargar el archivo");
+                    } else {
+                        resolve("Archivo descargado");
+                    }
+                }, 3000);
+            });
+        };
+
+        const procesarArchivo = () => {
+            return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if(Math.random() < 0.1){
+                    reject("Error al procesar el archivo");
+                } else {
+                    resolve("Archivo procesado");
+                }
+            }, 2000);
+        });
+    };
+        const guardarArchivo = () => {
+            return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if(Math.random() < 0.1){
+                    reject("Error al guardar el archivo");
+                } else {
+                    resolve("Archivo guardado");
+                }
+            }, 1000);
+        });
+    };
+
+        const iniciarProceso = () => {
+            const mensaje = document.getElementById("mensaje");
+            mensaje.textContent = "Procesando archivo...";
+            mensaje.className = "";
+
+            descargarArchivo()
+                .then(resultado => {
+                    mensaje.textContent = resultado;
+                    return procesarArchivo();
+                })
+                .then(resultado => {
+                    mensaje.textContent = resultado;
+                    return guardarArchivo();
+                })
+                .then(resultado => {
+                    mensaje.textContent = resultado;
+                    mensaje.className = "exito";
+                })
+                .catch(error => {
+                    mensaje.textContent = error;
+                    mensaje.className = "error";
+                });
+        }
+
+        document.getElementById('btnIniciar').addEventListener("click", iniciarProceso);
+
+
+
+    </script>
+</body>
+</html>

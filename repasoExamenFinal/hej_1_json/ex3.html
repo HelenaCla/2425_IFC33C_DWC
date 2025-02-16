@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON ex3</title>
+</head>
+<body>
+    <h2>Eventos</h2>
+    <select id="filtroCategoria">
+        <option value = "Todos">Todos</option>
+    </select>
+
+    <ul id="eventos"></ul>
+
+    <script>
+        const eventos = [
+            { "id": 1, "evento": "Partido de fútbol", "categoria": "Fútbol" },
+            { "id": 2, "evento": "Final de baloncesto", "categoria": "Baloncesto" },
+            { "id": 3, "evento": "Torneo de tenis", "categoria": "Tenis" },
+            { "id": 4, "evento": "Amistoso de fútbol", "categoria": "Fútbol" }
+        ]
+
+        const listaEventos = document.getElementById('eventos');
+        const filtroCategoria = document.getElementById('filtroCategoria'); 
+
+        const mostrarEventos = (eventosFiltrados) => {
+            listaEventos.innerHTML = "";
+
+            eventosFiltrados.forEach(evento => {
+                let li = document.createElement('li');
+                li.textContent = `${evento.evento} - ${evento.categoria}`;
+                listaEventos.appendChild(li);
+            });
+        };
+
+        const cargarCategorias = () => {
+            let categoriasUnicas = [...new Set(eventos.map(e => e.categoria))];
+            categoriasUnicas.forEach(categoria => {
+                let option = document.createElement('option');
+                option.textContent = categoria;
+                option.value = categoria;
+                filtroCategoria.appendChild(option);
+            });
+        };
+
+        function filtrarEventos (){
+            let categoriaSeleccionada = this.value;
+            if(categoriaSeleccionada === "Todos"){
+                mostrarEventos(eventos);
+            } else {
+                let eventosFiltrados = eventos.filter(e => e.categoria === categoriaSeleccionada);
+                mostrarEventos(eventosFiltrados);
+            }
+        }
+        
+        filtroCategoria.addEventListener('change', filtrarEventos)
+
+        cargarCategorias();
+        mostrarEventos(eventos);
+    </script>
+</body>
+</html>

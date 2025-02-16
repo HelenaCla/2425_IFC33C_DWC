@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p>
+        🔍 Explicación de los eventos observados
+        📌 Click (click)
+
+        Se dispara cuando haces clic en cualquier elemento de la página.
+        event.target.tagName muestra en la consola qué elemento fue clicado (ej. BUTTON, INPUT, A).
+            Ejemplo: Si haces clic en un botón, en la consola aparecerá:
+            Tipo de evento: click - Elemento: BUTTON
+    </p>
+    <p>
+        Se activa cuando un elemento que puede recibir foco (como input, textarea, select, button) es seleccionado.
+        event.target.tagName indica qué elemento obtuvo el foco.
+        Importante: Se usa { capture: true } en addEventListener para detectar eventos focus en elementos internos.
+        Ejemplo: Si haces clic en un campo de texto, aparecerá en la consola:
+
+        Tipo de evento: focus - Elemento enfocado: INPUT
+    </p>
+
+    <p>
+        Keypress (keypress)
+
+        Se activa cuando se presiona una tecla en un campo de entrada (input, textarea).
+        event.key muestra qué tecla se ha presionado.
+        Ejemplo: Si escribes la letra a, la consola mostrará
+        Tipo de evento: keypress - Tecla presionada: a
+
+    </p>
+</body>
+</html>

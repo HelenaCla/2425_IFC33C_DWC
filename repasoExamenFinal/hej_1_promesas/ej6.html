@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> Simulación de Carga de Tareas</h2>
+    <button id="btnIniciar">Iniciar</button>
+    <ul id="tareas"></ul>
+    <style>
+        .cumplida{
+            color: green;
+        }
+        .rechazada{
+            color: red;
+        }
+    </style>
+    <script>
+
+        const tarea = (nombre) => {
+            return new Promise((resolve, reject) => {
+                const tiempo = Math.floor(Math.random() * 2000 + 1000);
+                setTimeout(() => {
+                    if(Math.random() < 0.7){
+                        resolve(`${nombre} completada`);
+                    }else{
+                        reject(`${nombre} fallida`);
+                    }
+                }, tiempo);
+                })
+            };
+
+        const iniciarCarga = () => {
+            const listaTareas = document.getElementById("tareas");
+            listaTareas.innerHTML = "<li>Cargando tareas...</li>";
+
+            const tareas = [
+                tarea("Tarea 1"),
+                tarea("Tarea 2"),
+                tarea("Tarea 3"),
+                tarea("Tarea 4"),
+                tarea("Tarea 5")
+            ];
+
+            Promise.allSettled(tareas).then(resultados => {
+                listaTareas.innerHTML = "";
+
+                resultados.forEach((resultado, index) => {
+                    const li = document.createElement("li");
+                    li.textContent = `Tarea ${index + 1}: ${resultado.value || resultado.reason}`;
+                    
+                    if(resultado.status === "fulfilled"){
+                        li.clasList = "cumplida";
+                    }else{
+                        li.classList = "rechazada";
+                    }
+
+                    listaTareas.appendChild(li);
+                })
+            })
+
+        }
+            document.getElementById("btnIniciar").addEventListener("click", iniciarCarga);
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table { 
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: lightgray;
+        }
+        .destacado {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h2>Productos disponibles</h2>
+    <table id="tablaProductos">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        <tbody>
+
+        </tbody>
+    </table>
+
+<script>
+    const productos = [
+        { "id": 1, "nombre": "Camisa", "precio": 20.99 },
+        { "id": 2, "nombre": "Pantalón", "precio": 35.50 },
+        { "id": 3, "nombre": "Zapatos", "precio": 50.00 }
+    ]
+
+    const tbody = document.querySelector('#tablaProductos tbody');
+    
+    const cargarProductos = () => {
+        productos.forEach(producto =>{
+            let fila = document.createElement('tr');
+
+            let td = document.createElement('td');
+            td.textContent = producto.id;
+            fila.appendChild(td);
+
+            td = document.createElement('td');
+            td.textContent = producto.nombre;
+            fila.appendChild(td);
+
+            td = document.createElement('td');
+            td.textContent = producto.precio;
+            fila.appendChild(td);
+
+            td = document.createElement('td');
+            let btn = document.createElement('button');
+            btn.textContent = 'Destacar';
+            btn.classList.add('destacar');
+
+            btn.addEventListener('click', () => {
+                fila.classList.toggle('destacado');
+            });
+
+            td.appendChild(btn);
+            fila.appendChild(td);
+            tbody.appendChild(fila);
+        });
+
+    };
+    cargarProductos();
+</script>
+
+</body>
+</html>

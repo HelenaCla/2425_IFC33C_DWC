@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btnIniciar">Iniciar</button>
+    <p id="mensaje"></p>
+
+    <script>
+
+        const tirarDado = () =>{
+            return new Promise((resolve, reject) =>{
+                let resultado = Math.floor(Math.random() * 6) + 1;
+                setTimeout(() =>{
+                    if(resultado >= 4){
+                        resolve(`Exito! Obtuvo un ${resultado}`);	
+                    } else {
+                        reject(`Error! Obtuvo un ${resultado}`);
+                    }
+                }, 1000);
+            });
+            };
+        
+            const renderGame = () => {
+                const mensResultado = document.getElementById("mensaje");
+                mensResultado.textContent = "Tirando dado...";
+                mensResultado.style.color = "black";
+
+                tirarDado()
+                    .then((resultado) => {
+                        mensResultado.textContent = resultado;
+                        mensResultado.style.color = "green";
+                    })
+                    .catch((error) => {
+                        mensResultado.textContent = error;
+                        mensResultado.style.color = "red";
+                    });
+            };
+
+            document.getElementById("btnIniciar").addEventListener("click", renderGame);
+        
+
+    </script>
+</body>
+</html>

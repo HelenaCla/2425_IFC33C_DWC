@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 4</title>
+</head>
+<body>
+    <div>
+        <a href="#">Enlace</a>
+    </div>
+    <p>
+        
+    </p>
+
+    <script>
+        let enlace = document.querySelector('a');
+        enlace.addEventListener('click', (event) => {
+            event.preventDefault();
+        })
+
+        let div = document.querySelector('div');
+        div.addEventListener('click', () => {
+            console.log ('Div Clickado');
+        })
+    </script>
+
+
+</body>
+</html>

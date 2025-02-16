@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promoesas EJ 1</title>
+</head>
+<body>
+    <h2>Buscar Usuario</h2>
+    <input type="text" id="nombreUsuario" placeholder="Nombre de usuario">
+    <button id="btnBuscar">Buscar</button>
+    <p id="mensaje"></p>
+
+    <script>
+        const usuarios = ["Ana", "Carlos", "Beatriz", "David", "Elena"];
+
+        const buscarUsuarios = (nombre) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (!nombre.trim()){
+                        reject("No se ha introducido ningún nombre");
+                    } else if (usuarios.includes(nombre)){
+                        resolve("Usuario encontrado");
+                    } else {
+                        reject("Usuario no encontrado");
+                    }
+                }, 2000);
+            });
+        };
+
+        const inputNombre = document.getElementById("nombreUsuario");
+        const btnBuscar = document.getElementById("btnBuscar");
+        const mensaje = document.getElementById("mensaje");
+
+        btnBuscar.addEventListener("click", () => {
+            const nombre = inputNombre.value.trim()
+            mensaje.textContent = "Buscando usuario...";
+            mensaje.className = "";
+
+            buscarUsuarios(nombre)
+                .then((resultado) => {
+                    mensaje.textContent = resultado;
+                    mensaje.className = "success";
+                })
+                .catch((error) => {
+                    mensaje.textContent = error;
+                    mensaje.className = "error";
+                });
+        })
+    </script>
+</body>
+</html>

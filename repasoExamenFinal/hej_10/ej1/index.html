@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1</title>
+</head>
+<body>
+    <div id="miDiv">
+        <section id="mySection">
+            <button id="myButton">Haz Click Aquí</button>
+        </section>
+    </div>
+
+    <p>
+        En la fase de burbuja, los eventos se propagan en sentido inverso: desde el botón (target) hacia sus elementos padres (section y div).
+Permite que eventos disparados en elementos internos sean manejados por contenedores. Esto es útil para:
+Delegación de eventos: Puedes añadir un solo evento al div en lugar de a cada botón.
+Interacciones globales: Permite detectar clics o acciones desde niveles superiores sin modificar cada elemento hijo.
+    </p>
+
+    <script>
+        const miDiv = document.getElementById('miDiv');
+        const mySection = document.getElementById('mySection');
+        const myButton = document.getElementById('myButton');
+
+        miDiv.addEventListener("click", () => {
+            console.log('Captura: DIV');
+        }, true);
+
+        mySection.addEventListener("click", () => {
+            console.log('Captura: SECTION');
+        }, true);
+
+        myButton.addEventListener("click", () => {
+            console.log('Captura: button'); 
+        }, true)
+
+        miDiv.addEventListener("click", () => {
+            console.log('Burbuja: DIV');
+        }, false);
+
+        mySection.addEventListener("click", () => {
+            console.log('Burbuja: SECTION');
+        }, false);
+
+        myButton.addEventListener("click", () => {
+            console.log('Burbuja: button'); 
+           // event.stopPropagation();
+        }, false)
+
+
+    </script>
+
+</body>
+</html>

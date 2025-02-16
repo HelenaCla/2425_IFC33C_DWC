@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex4</title>
+</head>
+<body>
+<h2> Información del Clima</h2>
+<div id="clima">
+    <p><strong>Ciudad</strong><span id="ciudad">-</span></p>
+    <p><strong>Temperatura</strong><span id="temperatura">-</span></p>
+    <p><strong>Descripción</strong><span id="descripcion">-</span></p>
+</div>
+
+<button id="actualizaClima">Actualizar Clima</button>
+
+
+<script>
+    const datosClima = {
+        "ciudad": "Barcelona",
+        "temperatura": 20,
+        "descripcion": "Soleado"
+        }
+
+        const ciudad = document.getElementById('ciudad');
+        const temperatura = document.getElementById('temperatura');
+        const descripcion = document.getElementById('descripcion');
+        const btnActualizar = document.getElementById('actualizaClima');
+
+        const mostrarClima = (datos) => {
+            ciudad.textContent = datos.ciudad;
+            temperatura.textContent = datos.temperatura;
+            descripcion.textContent = datos.descripcion;
+        }
+
+        const actualizarClima = (callback) => {
+            console.log("obteniendo datos del clima...")
+            setTimeout(() =>{
+                const nuevosDatos = {
+                    "ciudad": "Barcelona",
+                    "temperatura": 18,
+                    "descripcion": "Parcialmente nublado"
+                };
+                console.log("datos del clima actualizados");
+                callback(nuevosDatos);
+            }, 2000);
+        };
+
+        btnActualizar.addEventListener('click', () =>{
+            actualizarClima(mostrarClima);
+        });
+
+        mostrarClima(datosClima);
+</script>
+</body>
+</html>

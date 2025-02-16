@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 3</title>
+</head>
+<body>
+    <ul>
+        <li>Tarea Inicial 1</li>
+        <li>Tarea Inicial 2</li>
+        <li>Tarea Inicial 3</li>
+    </ul>
+    <button id="btnAgregar">Agregar Tarea</button>
+<script>
+    let boton  = document.getElementById('btnAgregar');
+    let ul = document.querySelector('ul');
+    boton.addEventListener('click', () =>{
+        const ul = document.querySelector('ul');
+        const li = document.createElement('li');
+        li.textContent = 'Nueva tarea';
+        ul.appendChild(li);
+    })
+    ul.addEventListener('click', (event) =>{
+        if(event.target.tagName === 'LI'){
+            console.log(event.target.textContent)
+        }
+        
+    })
+</script>
+
+</body>
+</html>
